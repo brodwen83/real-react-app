@@ -6,10 +6,9 @@ import { login } from "../../redux/user/user-actions";
 import { connect } from "react-redux";
 
 class LoginPage extends React.Component {
-  /**
-   * get data from <loginForm />
-   * then redirects to home when no errors
-   * @login   thunk action from user-actions   *
+  /** get data from <loginForm />
+   *  then redirects to home when no errors
+   *  @param login - thunk action from user-actions   *
    */
   submit = data =>
     this.props.login(data).then(() => this.props.history.push("/"));
