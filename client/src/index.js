@@ -7,6 +7,12 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
+import { userLoggedIn } from "./redux/user/user-actions";
+
+if (localStorage.bookwormJWT) {
+  const user = { token: localStorage.bookwormJWT };
+  store.dispatch(userLoggedIn(user));
+}
 
 ReactDOM.render(
   <BrowserRouter>
