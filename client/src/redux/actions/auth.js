@@ -12,14 +12,14 @@ export const login = credentials => dispatch =>
     localStorage.bookwormJWT = user.token;
     dispatch(userLoggedIn(user));
   });
-/** end login */
 
 /** logout */
 export const logout = () => dispatch => {
   localStorage.removeItem("bookwormJWT");
   dispatch(userLoggedOut());
 };
-/** end logout */
+
+/** signup */
 
 /** ACTION CREATORS */
 /** @param user

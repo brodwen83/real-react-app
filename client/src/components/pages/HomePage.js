@@ -12,7 +12,15 @@ const HomePage = ({ isAuthenticated, logout }) => {
       {isAuthenticated ? (
         <Button onClick={() => logout()}>Logout</Button>
       ) : (
-        <Link to="/login">Login</Link>
+        <Button.Group>
+          <Button positive as={Link} to="/login">
+            Login
+          </Button>
+          <Button.Or />
+          <Button primary as={Link} to="/signup">
+            Signup
+          </Button>
+        </Button.Group>
       )}
     </div>
   );
