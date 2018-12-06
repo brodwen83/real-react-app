@@ -7,7 +7,7 @@ import { BrowserRouter } from "react-router-dom";
 
 import { Provider } from "react-redux";
 import store from "./redux/store";
-import { userLoggedIn } from "./redux/user/user-actions";
+import { userLoggedIn } from "./redux/actions/auth";
 
 if (localStorage.bookwormJWT) {
   const user = { token: localStorage.bookwormJWT };

@@ -3,7 +3,7 @@ import { Button } from "semantic-ui-react";
 import PropTypes from "prop-types";
 import { Link } from "react-router-dom";
 import { connect } from "react-redux";
-import * as actions from "../../redux/user/user-actions";
+import * as actions from "../../redux/actions/auth";
 
 const HomePage = ({ isAuthenticated, logout }) => {
   return (

@@ -1,4 +1,4 @@
-import { USER_LOGGED_IN, USER_LOGGED_OUT } from "./user-action-types";
+import { USER_LOGGED_IN, USER_LOGGED_OUT } from "../actiontypes/auth";
 import api from "../api";
 
 /** login: A function that takes 'credentials'
