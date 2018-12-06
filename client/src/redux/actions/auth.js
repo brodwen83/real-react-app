@@ -14,24 +14,25 @@ export const login = credentials => dispatch =>
   });
 /** end login */
 
+/** logout */
 export const logout = () => dispatch => {
   localStorage.removeItem("bookwormJWT");
   dispatch(userLoggedOut());
 };
+/** end logout */
 
-/**
- * @param user
+/** ACTION CREATORS */
+/** @param user
  * returns actions
- * 'user' as payload to the reducer
- */
+ * 'user' as payload to the reducer */
 export const userLoggedIn = user => ({
   type: USER_LOGGED_IN,
   user
 });
 
-/**
- * @description returns action USER_LOGGED_OUT
- */
+/** @description returns action USER_LOGGED_OUT */
 export const userLoggedOut = () => ({
   type: USER_LOGGED_OUT
 });
+
+/** end action creators */
