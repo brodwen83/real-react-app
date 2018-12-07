@@ -8,9 +8,15 @@ import { BrowserRouter } from "react-router-dom";
 import { Provider } from "react-redux";
 import store from "./redux/store";
 import { userLoggedIn } from "./redux/actions/auth";
+import jwtdecode from "jwt-decode";
 
 if (localStorage.bookwormJWT) {
-  const user = { token: localStorage.bookwormJWT };
+  const payload = jwtdecode(localStorage.bookwormJWT);
+  const user = {
+    token: localStorage.bookwormJWT,
+    email: payload.email,
+    confirmed: payload.confirmed
+  };
   store.dispatch(userLoggedIn(user));
 }
 

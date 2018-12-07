@@ -13,7 +13,8 @@ const userSchema = new mongoose.Schema(
       unique: true
     },
     passwordHash: { type: String, required: true },
-    confirmed: { type: Boolean, default: false }
+    confirmed: { type: Boolean, default: false },
+    confirmationToken: { type: String, default: "" }
   },
   { timestamps: true }
 );
@@ -22,12 +23,23 @@ userSchema.methods.setPassword = function setPassword(password) {
   this.passwordHash = bcrypt.hashSync(password, 10);
 };
 
+userSchema.methods.setConfirmationToken = function setConfirmationToken() {
+  this.confirmationToken = this.generateJWT();
+};
+
+userSchema.methods.generateConfirmationURL = function generateConfirmationURL() {
+  return `${process.env.HOST}/confirmation/${this.confirmationToken}`;
+};
+
 userSchema.methods.isValidPassword = function isValidPassword(password) {
   return bcrypt.compareSync(password, this.passwordHash);
 };
 
 userSchema.methods.generateJWT = function generateJWT() {
-  return jwt.sign({ email: this.email }, process.env.JWT_SECRET);
+  return jwt.sign(
+    { email: this.email, confirmed: this.confirmed },
+    process.env.JWT_SECRET
+  );
 };
 
 userSchema.methods.toAuthJSON = function toAuthJSON() {
